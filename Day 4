@@ -1,0 +1,35 @@
+Leetcode Q1160 Find Words That Can Be Formed by Characters
+
+Code:
+
+class Solution {
+public:
+    int possible(vector<int>freq, string word){
+        int sum=0;
+        for(int i=0;i<word.size();i++){
+            if(freq[word[i]]>0){
+                sum++;
+                freq[word[i]]--;
+            }
+            else{
+                return 0;
+            }
+        }
+        return sum;
+    }
+    int countCharacters(vector<string>& words, string chars) {
+        vector<int>freq(150,0);
+        int sum=0;
+        for(int i=0;i<chars.size();i++){
+            freq[chars[i]]++;
+        }
+        for(int i=0;i<words.size();i++){
+            string word=words[i];
+            int x=possible(freq,word);
+            if(x>0){
+                sum+=x;
+            }
+        }
+        return sum;
+    }
+};
