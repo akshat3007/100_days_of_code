@@ -1,0 +1,19 @@
+Leetcode Q1716. Calculate Money in Leetcode Bank
+
+Code:
+
+class Solution {
+public:
+    int totalMoney(int n) {
+        int sum=0, week=0,count=1;
+        for(int i=1;i<=n;i++){
+            sum=sum+count+week;
+            count++;
+            if(i%7==0){
+                week++;
+                count=1;
+            }
+        }
+        return sum;
+    }
+};
