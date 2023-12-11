@@ -1,0 +1,23 @@
+Leetcode Q1287. Element Appearing More Than 25% In Sorted Array
+
+Code:
+
+class Solution {
+public:
+    int findSpecialInteger(vector<int>& arr) {
+        if(arr.size()==1) return arr[0];
+        int start=0, count=0, ans=0, maxi=-1;
+        for(int i=0;i<arr.size()-1;i++){
+            if((i+1)==arr.size()-1) count=(i+1)-start+1;
+            if(arr[i]!=arr[i+1]){
+                count=i-start+1;
+                start=i+1;
+            }
+            if(count>maxi){
+                maxi=count;
+                ans=arr[i];
+            }
+        }
+        return ans;
+    }
+};
