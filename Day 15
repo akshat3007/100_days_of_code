@@ -1,0 +1,34 @@
+Leetcode Q1582. Special Positions in a Binary Matrix
+
+Code:
+
+class Solution {
+public:
+    int checkRow(vector<vector<int>>& mat, int i){
+        int count=0,ans=-1;
+        for(int j=0;j<mat[i].size();j++){
+            if(mat[i][j]==1){
+                count++;
+                ans=j;
+            }
+        }
+        if(count!=1) return -1;
+        else return ans;
+    }
+    bool checkColumn(vector<vector<int>>& mat, int j){
+        int count=0;
+        for(int i=0;i<mat.size();i++){
+            if(mat[i][j]==1) count++;
+        }
+        if(count!=1) return false;
+        else return true;
+    }
+    int numSpecial(vector<vector<int>>& mat) {
+        int special=0,count=0;
+        for(int i=0;i<mat.size();i++){
+            int j=checkRow(mat,i);
+            if(j!=-1 && checkColumn(mat, j)) special++;
+        }
+        return special;
+    }
+};
