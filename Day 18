@@ -1,0 +1,52 @@
+Leetcode Q242. Valid Anagram
+
+Code:
+
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+        
+        //TLE:
+        // int c=0; char ch, ch1;
+        // if(s.length()!=t.length()){
+        //     return false;
+        // }
+        // for(int i=0;i<s.length();i++){
+        //     ch=s.at(i);
+        //     for(int j=0;j<t.length();j++){
+        //         ch1=t.at(j);
+        //         if(ch==ch1){
+        //             c++;
+        //             t[j]='0';
+        //             break;
+        //         }
+        //     }
+        // }
+        // if(c==s.length()){
+        //     return true;
+        // }
+        // else{
+        //     return false;
+        // }
+
+        //optimised approach using HASHTABLE:
+
+        //basically we initialised all ASCII values with 0 in the hashtable, then we traverse the s string and increment the values in hashtable
+        //at ASCII value of characters present in string s, then we traverse string t and decrement the values in hashtable at ASCII value of 
+        //characters present in string t, if both strings are anagram of each other then all values will become 0.
+        
+        int freqTable[256] = {0};
+        for(int i=0;i<s.size();i++){
+            freqTable[s[i]]++;
+        }
+        for(int i=0;i<t.size();i++){
+            freqTable[t[i]]--;
+        }
+        for(int i=0;i<256;i++){
+            if(freqTable[i]!=0){
+                return false;
+            }
+        }
+        return true;
+    }
+};
