@@ -1,0 +1,35 @@
+Leetcode Q14. Longest Common Prefix
+
+Code:
+
+class Solution {
+public:
+    string longestCommonPrefix(vector<string>& strs) {
+            if(strs.size()==1){
+                return strs[0];
+        }
+        string first=strs[0];
+        string cpr;
+        string ans;
+        int min=0;
+        int c;
+        for(int i=1;i<strs.size();i++){
+            cpr=strs[i];
+            c=0;
+            for(int j=0;j<first.length();j++){
+                if(cpr[j]==first[j]){
+                c++;
+                }
+            else{
+                break;
+            }
+        }
+            if(i==1){
+                min=c;
+            }
+            min= (min<=c)? min:c;
+        }
+        ans= first.substr(0,min);
+        return ans;
+    }
+};
