@@ -1,0 +1,20 @@
+Leetcode Q1637. Widest Vertical Area Between Two Points Containing No Points
+
+Code:
+
+class Solution {
+public:
+    int maxWidthOfVerticalArea(vector<vector<int>>& points) {
+        vector<int>nums;
+        int maxi = INT_MIN;
+        for(int i=0;i<points.size();i++){
+            nums.push_back(points[i][0]);
+        }
+        sort(nums.begin(),nums.end());
+        for(int i=1;i<nums.size();i++){
+            int width = nums[i]-nums[i-1];
+            maxi=max(maxi,width);
+        }
+        return maxi;
+    }
+};
