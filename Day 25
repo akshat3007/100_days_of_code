@@ -1,0 +1,20 @@
+Leetcode Q392. Is Subsequence
+
+Code:
+
+class Solution {
+public:
+    bool isSubsequence(string s, string t) {
+        int j=0,c=0;
+        while(j<t.size()){
+            if(t[j]==s[c]){
+                c++;
+                j++;
+            }
+            else{
+                j++;
+            }
+        }
+        return c==s.size();
+    }
+};
