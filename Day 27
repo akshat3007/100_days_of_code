@@ -1,0 +1,21 @@
+Leetcode Q455. Assign Cookies
+
+Code:
+
+class Solution {
+public:
+    int findContentChildren(vector<int>& g, vector<int>& s) {
+        sort(g.begin(),g.end());
+        sort(s.begin(),s.end());
+        int p1=0, p2=0, count=0;
+        while(p2<s.size() && p1<g.size()){
+            if(s[p2]>=g[p1]){
+                count++;
+                p1++;
+                p2++;
+            }
+            else p2++;
+        }
+        return count;
+    }
+};
