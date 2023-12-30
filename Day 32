@@ -1,0 +1,20 @@
+Leetcode Q1897. Redistribute Characters to Make All Strings Equal
+
+Code:
+
+class Solution {
+public:
+    bool makeEqual(vector<string>& words) {
+        vector<int>freqTable(26);
+        for(int i=0;i<words.size();i++){
+            for(int j=0;j<words[i].size();j++){
+                freqTable[words[i][j]-'a']++;
+            }
+        }
+        for(int i=0;i<freqTable.size();i++){
+            if(freqTable[i]%words.size()!=0)
+            return false;
+        }
+        return true;
+    }
+};
