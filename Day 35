@@ -1,0 +1,23 @@
+Leetcode Q2610. Convert an Array Into a 2D Array With Conditions
+
+Code:
+
+class Solution {
+public:
+    vector<vector<int>> findMatrix(vector<int>& nums) {
+        vector<int>freq(201,0);
+        int maxi=INT_MIN;
+        for(int i=0;i<nums.size();i++){
+            freq[nums[i]]++;
+            if(freq[nums[i]]>maxi) maxi= freq[nums[i]];
+        }
+        vector<int>freqTable(201,0);
+        vector<vector<int>>ans(maxi);
+        for(int i=0;i<nums.size();i++){
+            freqTable[nums[i]]++;
+            if(freqTable[nums[i]]>1) ans[freqTable[nums[i]]-1].push_back(nums[i]);
+            else ans[0].push_back(nums[i]);
+        }
+        return ans;
+    }
+};
