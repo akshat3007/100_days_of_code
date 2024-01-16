@@ -1,0 +1,24 @@
+Leetcode Q1051. Height Checker
+
+Code:
+
+class Solution {
+public:
+    int heightChecker(vector<int>& heights) {
+        unordered_map<int,int>mp;
+        for(int i=0;i<heights.size();i++){
+            mp[heights[i]]++;
+        }
+        int index=0,ans=0;
+        for(int i=1;i<=100;i++){
+            while(mp[i]>0){
+                if(heights[index]!=i){
+                    ans++;
+                }
+                index++;
+                mp[i]--;
+            }
+        }
+        return ans;
+    }
+};
