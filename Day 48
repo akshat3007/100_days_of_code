@@ -1,0 +1,27 @@
+Leetcode Q2225. Find Players With Zero or One Losses
+
+Code:
+
+class Solution {
+public:
+    vector<vector<int>> findWinners(vector<vector<int>>& matches) {
+        int maxi=INT_MIN;
+        vector<int>freq(100001,0);
+        vector<int>present(100001,0);
+        vector<vector<int>>ans(2);
+        for(int i=0;i<matches.size();i++){
+            int num=matches[i][1];
+            freq[num]++;
+            int winner=matches[i][0];
+            present[num]++;
+            present[winner]++;
+            maxi=max(maxi,max(num,winner));
+        }
+        for(int i=1;i<=maxi;i++){
+            if(present[i]==0) continue;
+            if(freq[i]==0) ans[0].push_back(i);
+            else if(freq[i]==1) ans[1].push_back(i);
+        }
+        return ans;
+    }
+};
